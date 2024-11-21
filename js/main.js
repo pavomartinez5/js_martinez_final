@@ -30,3 +30,35 @@ const createSelectOptions = (users) => {
 
   return options;
 };
+
+//3. toggleCommentSection
+
+const toggleCommentSection = (postId) => {
+  if (!postId) {
+    return undefined;
+  }
+  const section = document.querySelector(`section[data-post-id="${postId}"]`);
+
+  if (!section) {
+    return null;
+  }
+  section.classList.toggle("hide");
+
+  return section;
+};
+
+//4.toggleCommentButton
+const toggleCommentButton = (postId) => {
+  if (!postId) {
+    return undefined;
+  }
+  const button = document.querySelector(`button[data-post-id="${postId}"]`);
+  if (!button) {
+    return null;
+  }
+
+  button.textContent =
+    button.textContent === "Show Comments" ? "Hide Comments" : "Show Comments";
+
+  return button;
+};
