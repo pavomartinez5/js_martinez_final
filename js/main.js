@@ -295,29 +295,23 @@ const refreshPosts = async (posts) => {
 
 // 19. selectMenuChangeEventHandler
 const selectMenuChangeEventHandler = async (event) => {
-  // Check to see if the event is a change event. If not, early return.
   if (!event || event.type !== "change") {
     return undefined;
   }
 
-  // Event.target, if that value is not undefined, set the disabled property to true at this point in the function.
   const selectMenu = event?.target;
 
   if (selectMenu !== undefined) {
     selectMenu.disabled = true;
   }
-  // is equal to "Employees" as that is the value set by the html file. In either case, you should assign the userId a value of
   let userId = event?.target?.value || 1;
   if (userId === "Employees") {
     userId = 1;
   }
 
-  // Define posts and set the value equal to the awaited result of getUserPosts that receives the userId value as a parameter.
   const posts = await getUserPosts(userId);
-  // Define refreshPostsArray and set it equal to the awaited result of refreshPosts that receives the posts variable as a parameter.
   const refreshPostsArray = await refreshPosts(posts);
 
-  // If the event.target (aka selectMenu) exists, set the disabled property to false.
   if (selectMenu) {
     selectMenu.disabled = false;
   }
