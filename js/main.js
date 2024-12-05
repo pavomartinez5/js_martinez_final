@@ -86,6 +86,9 @@ const addButtonListeners = () => {
   if (buttons.length > 0) {
     buttons.forEach((button) => {
       const postId = button.dataset.postId;
+      if (!postId) {
+        return undefined;
+      }
       if (postId) {
         button.addEventListener("click", (event) => {
           toggleComments(event, postId);
